@@ -1,1 +1,490 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="icon" href="./favicon.png">
+<link rel="stylesheet" id="main-css" href="./style.css" type="text/css" media="all">
+<link rel="stylesheet" id="wordpress-css" href="./wordpress.css" type="text/css" media="all">
+<link rel="stylesheet" id="elementor-post-251-css" href="./post-251.css" type="text/css" media="all">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<script type="text/javascript" src="./jquery.min.js" id="jquery-core-js"></script>
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Wheel Of Fortune</title>
+<link rel="stylesheet" href="./vendor.bundle.base.css">
+<link rel="stylesheet" href="./style2.css">
+<style>
+::-webkit-scrollbar {
+    display: none;
+}
+@font-face { font-family: Really Free; src: url('Really Free.ttf'); } 
+</style>
+</head>
 
+
+<body class="sidebar-toggle-display sidebar-hidden home page-template page-template-templates page-template-full-width page-template-templatesfull-width-php page page-id-251 wp-custom-logo theme-mode-dark conditional-settings no-sidebar elementor-default elementor-kit-6 elementor-page elementor-page-251 e--ua-blink e--ua-chrome e--ua-webkit" style="background-color:#111111" data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0" data-elementor-device-mode="desktop">
+	<style id='black'>.content-wrapper {background: #1f1f1f;}.card{background: #2f2f2f;}.table thead th{border-bottom: 2px solid #7d7d7d;}.table{color: #f9f9f9;}.card .card-title {color: #fff;}.table td{border-top: 1px solid #8a8a8a;}.form-control,.form-control:focus{color: #e8e8e8;background-color: #656565;border: 1px solid #737373;}.btn-light,.btn-light:focus {color: #f5f5f5;background-color: #505050;border-color: #525252;}.btn-light:hover {color: #dcdcdc;background-color: #3c3c3c;border-color: #464646;}.btn-light:not(:disabled):not(.disabled):active {color: #ffffff;background-color: #2f2f2f;border-color: #333333;}body{color:#e0e0e0;}.footer {background: #1f1f1f;border-top: 1px solid #2f2f2f;}</style>
+	<div data-elementor-type="wp-page" data-elementor-id="251" class="elementor elementor-251" data-elementor-settings="[]">
+		<section class="elementor-section elementor-top-section elementor-element elementor-element-6dc00f2 elementor-section-full_width elementor-section-height-default">
+				<div class="swiper-container slider-container no-slider animation slider-h-auto slider-h-100 swiper-container-initialized swiper-container-horizontal" data-speed="10000">
+						<div class="swiper-slide slide-center slider-item swiper-slide-active" style="width: 2543px; height: 100%;">
+							<div id="particles-1" class="particles full-image" data-particle="space"><canvas class="particles-js-canvas-el" width="100%" height="100%"></canvas></div>
+								<div class="slide-content row">
+								<div class="col-9 grid-margin">
+                    <div class="card">
+                    <h1 class="winner text-center mt-5">Winner</h1>
+                      <div class="card-body maxbody d-flex justify-content-center">
+                          <div id="wheelOfFortune">
+                              <canvas id="wheel" width="700" height="700" style="transform: rotate(-1.5708rad);"></canvas>
+                              <div id="spin" style="background: rgb(255, 136, 34);">Start</div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="card mt-2 ele">
+                      <div class="card-body">
+                        <h4 class="card-title">Lots</h4>
+                        <div class="table-responsive">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th> Name </th>
+                                <th style="max-width: 67px;"> Color </th>
+                                <th style="max-width: 50px;"> Chance % </th>
+                                <th> Total </th>
+                                <th> +</th>
+                                <th style="max-width: 67px;text-align: right;"><button class="btn btn-sm btn-danger" onclick="clearall();">Clear</button></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="row d-flex justify-content-center mt-2"><button class="btn btn-success" id="add">Add</button></div>
+                      </div>
+                    </div>
+              </div>
+              <div class="col-3 grid-margin">
+                <div id="time-container">
+                  <div class="card tim">
+                    <div class="card-body">
+                      <h4 class="card-title">Timer</h4>
+                      <div id="countdown" class="countdown">
+                        <div class="countdown-number">
+                          <span style="min-width: 64px;" class="minutes countdown-time">10</span>
+                        </div>
+                        <div class="countdown-number">
+                          <span style="min-width: 64px;" class="seconds countdown-time">00</span>
+                        </div>
+                    </div>
+                    <br>
+                      <button class="btn btn-secondary btn-md mt-2 mr-2" style="font-size: 20px;padding: 20px;" onclick="plus1()">+1</button>
+                      <button class="btn btn-secondary btn-md mt-2 mr-2" style="font-size: 20px;padding: 20px;" onclick="plus2()">+2</button>
+                      <button class="btn btn-secondary btn-md mt-2 mr-2" style="font-size: 20px;padding: 20px;" onclick="eq10()">=10</button>
+                      <button class="btn btn-secondary btn-md mt-2 mr-2" style="font-size: 20px;padding: 20px;" onclick="minus1()">-1</button>
+                      <br>
+                      <button class="btn btn-light btn-md mt-2" onclick="start()">Start</button>
+                      <button class="btn btn-light btn-md mt-2" onclick="stop()">Stop</button>
+                    </div>
+                  </div>
+                  <div class="card mt-2">
+                    <div class="card-body">
+                      <h4 class="card-title">Wheel size</h4>
+                      <input type="range" id="volume" oninput="changesize($(this).val())" onchange="changesize($(this).val())" class="form-control" name="volume" min="1" max="2" step="0.1" value="1">
+                      <br>
+                      <h4 class="card-title">Timer position</h4>
+                      <button class="btn btn-light btn-md mt-2" onclick="left()">Left</button>
+                      <button class="btn btn-light btn-md mt-2" onclick="right()">Right</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+								</div>
+						</div>				
+				</div>
+		</section>
+	</div>
+
+
+<style id="default-inline-css" type="text/css">
+:root {--h1-font: Pacifico, cursive;--h2-font: Really Free;--h3-font: Poppins, sans-serif;--p-font: Poppins, sans-serif;--footer-brand-height: 45px;--header-bg-color: #111111;--nav-item-color: #f5f5f5;--top-nav-item-color: #f5f5f5;--hero-bg-color: #040402;--primary-color: #fca311;--secondary-color: #fc5130;--dark-button-color: #f5f5f5;--dark-button-hover-color: #f5f5f5;--dark-button-bg-color: #040402;} .showcase .card .image-over img { min-height: 360px; }
+</style>
+<script type="text/javascript" src="./particles.min.js" id="particles-js"></script>
+<script type="text/javascript" src="./main.js" id="main-js"></script>
+</body></html>
+
+</style>
+<script type="text/javascript" src="./particles.min.js" id="particles-js"></script>
+<script type="text/javascript" src="./main.js" id="main-js"></script>
+<script src="./vendor.bundle.base.js"></script>
+    <script src="./color.js"></script>
+    <script type="text/javascript">
+        function white() {
+            if ($("#black").length == 0) {
+                $("#white").remove();
+                $("body").append("<style id='black'>.content-wrapper {background: #1f1f1f;}.card{background: #2f2f2f;}.table thead th{border-bottom: 2px solid #7d7d7d;}.table{color: #f9f9f9;}.card .card-title {color: #fff;}.table td{border-top: 1px solid #8a8a8a;}.form-control,.form-control:focus{color: #e8e8e8;background-color: #656565;border: 1px solid #737373;}.btn-light,.btn-light:focus {color: #f5f5f5;background-color: #505050;border-color: #525252;}.btn-light:hover {color: #dcdcdc;background-color: #3c3c3c;border-color: #464646;}.btn-light:not(:disabled):not(.disabled):active {color: #ffffff;background-color: #2f2f2f;border-color: #333333;}body{color:#e0e0e0;}.footer {background: #1f1f1f;border-top: 1px solid #2f2f2f;}</style>")
+            }
+        }
+        function black() {
+            if ($("#white").length == 0) {
+                $("#black").remove();
+                $("body").append("<style id='white'>.content-wrapper {background: #f2edf3;}.card{background: #fff;}.table thead th{border-bottom: 2px solid #ebedf2;}.table{color: #212529;}.card .card-title {color: #343a40;}.table td{border-top: 1px solid #ebedf2;}.form-control,.form-control:focus{color: #212529;background-color: #fff;border: 1px solid #ebedf2;}.btn-light:hover {color: #212529;background-color: #e2e6ea;border-color: #dae0e5;}.btn-light:not(:disabled):not(.disabled):active {color: #212529;background-color: #dae0e5;border-color: #d3d9df;}body{color: #343a40;}.footer {background: #f2edf3;border-top: 1px solid #e7dee9;}</style>")
+            }
+        }
+        var mins = 10;
+        var deadline = new Date(Date.parse(new Date()) + 10 * 60 * 1000);
+        function start() {
+            if (typeof timeinterval !== 'undefined') {
+                clearInterval(timeinterval);
+                timeinterval = null;
+            }
+            deadline = new Date(Date.parse(new Date()) + mins * 60 * 1000)
+            initializeClock('countdown', deadline, true);
+        }
+        function plus1() {
+            //$(".minutes")[0].innerText = ('0' + Number($(".minutes").text()) + 1).slice(-2);
+            mins++;
+            if (typeof timeinterval !== 'undefined' && timeinterval != null) {
+                deadline = new Date(Date.parse(deadline) + 1000 * 60);
+            } else {
+                deadline = new Date(Date.parse(new Date()) + mins * 1000 * 60);
+            }
+            initializeClock('countdown', deadline, false);
+        }
+        function plus2() {
+            //$(".minutes")[0].innerText = ('0' + Number($(".minutes").text()) + 2).slice(-2);
+            mins += 2;
+            if (typeof timeinterval !== 'undefined' && timeinterval != null) {
+                deadline = new Date(Date.parse(deadline) + 1000 * 60 * 2);
+            } else {
+                deadline = new Date(Date.parse(new Date()) + mins * 1000 * 60);
+            }
+            initializeClock('countdown', deadline, false);
+        }
+        function minus1() {
+            if (mins - 1 < 0 || Number($(".minutes").text()) - 1 < 0) {
+                //$(".minutes")[0].innerText = 0;
+                //deadline = new Date(Date.parse(Date.parse(new Date())));
+                //initializeClock('countdown', deadline, false);
+            } else {
+                //$(".minutes")[0].innerText = ('0' + Number($(".minutes").text()) - 1).slice(-2);
+                mins--;
+                if (typeof timeinterval !== 'undefined' && timeinterval != null) {
+                    deadline = new Date(Date.parse(deadline) - 1000 * 60);
+                } else {
+                    deadline = new Date(Date.parse(new Date()) + mins * 1000 * 60);
+                }
+                initializeClock('countdown', deadline, false);
+            }
+        }
+        function eq10() {
+            //$(".minutes")[0].innerText = 10;
+            //$(".seconds")[0].innerText = "00";
+            mins = 10;
+            if (typeof timeinterval !== 'undefined' && timeinterval != null) {
+                deadline = new Date(Date.parse(new Date()) + 10 * 60 * 1000);
+            } else {
+                deadline = new Date(Date.parse(new Date()) + 10 * 1000 * 60);
+            }
+            initializeClock('countdown', deadline, false);
+        }
+        function stop() {
+            if (typeof timeinterval !== 'undefined' && timeinterval != null) {
+                clearInterval(timeinterval);
+                timeinterval = null;
+            }
+        }
+        function getTimeRemaining(endtime) {
+            var t = Date.parse(endtime) - Date.parse(new Date());
+            var seconds = Math.floor((t / 1000) % 60);
+            var minutes = Math.floor((t / 1000 / 60) % 60);
+            return {
+            'total': t,
+            'minutes': minutes,
+            'seconds': seconds
+            };
+        }
+
+        function initializeClock(id, endtime, go) {
+            var clock = document.getElementById(id);
+            var minutesSpan = clock.querySelector('.minutes');
+            var secondsSpan = clock.querySelector('.seconds');
+
+            function updateClock() {
+                time = getTimeRemaining(deadline);
+
+                minutesSpan.innerHTML = ('0' + time.minutes).slice(-2);
+                secondsSpan.innerHTML = ('0' + time.seconds).slice(-2);
+
+                if (typeof timeinterval !== 'undefined' && time.total <= 0) {
+                  clearInterval(timeinterval);
+                  timeinterval = null;
+                }
+            }
+
+            updateClock();
+            if (go) {
+                timeinterval = setInterval(updateClock, 1000);
+            }
+        }
+    </script>
+
+    <!--колесо-->
+    <script type="text/javascript">
+        var spinned = false;
+        var PI = Math.PI;
+        var TAU = 2 * PI;
+
+        var summ = 0;
+        var sectors = [
+            {color:"#f82", label:"", arc:0, w: 0, val:0},
+        ];
+
+
+        var rand = (m, M) => Math.random() * (M - m) + m;
+        var EL_spin = document.querySelector("#spin");
+        var ctx = document.querySelector("#wheel").getContext('2d');
+        var rad = ctx.canvas.width / 2;
+
+        var friction = rand(0.995, 0.998); // 0.995=soft, 0.99=mid, 0.98=hard
+        let angVel = 0; // Angular velocity
+        let ang = 0; // Angle in radians
+
+        //узнаем какой вариант текущий
+        function getIndex() {
+            var rez = 0;
+            sectors.forEach(function(sector, i) {
+                if (TAU-ang >= sector.w && TAU-ang <= sector.w + sector.arc) {
+                    rez = i;
+                }
+            });
+            return rez;
+        }
+        //отрисовка секторов колеса
+        function drawSector(sector, i, sectorlast) {
+            //var ang = arc * i;
+            var ang = sectorlast;
+            sector.w = sectorlast;
+            ctx.save();
+            // COLOR
+            ctx.beginPath();
+            ctx.fillStyle = sector.color;
+            //ctx.fillStyle = randomColor({luminosity: 'dark', format: 'rgba', alpha: 0.8});
+            //console.log((TAU*sector.val/summ) / summ * 100);
+            ctx.moveTo(rad, rad);
+            ctx.arc(rad, rad, rad, ang, ang + sector.arc);
+            ctx.lineTo(rad, rad);
+            ctx.fill();
+            // TEXT
+            ctx.translate(rad, rad);
+            ctx.rotate(ang + sector.arc / 2);
+            ctx.textAlign = "right";
+            ctx.fillStyle = "#fff";
+            //size = 35;
+            //if (sector.label.length > 4) {size = 35 - (sector.label.length - 9)}
+            size = TAU*sector.val/summ * 120 < 15 ? (TAU*sector.val/summ * 120) + 5 : TAU*sector.val/summ * 120;
+            if (size > 60) {size = 60};
+            //size = TAU*sector.val/summ * 80;
+            do {
+                size--;
+                ctx.font = size + 'px sans-serif';
+            } while (ctx.measureText(sector.label).width > rad - $("#spin").width() * 0.6);
+            //ctx.font = size + "px sans-serif";
+            ctx.fillText(sector.label, rad - 10, size / 3);
+              //
+            ctx.restore();
+        };
+
+        function rotate() {
+            var sector = sectors[getIndex()];
+            ctx.canvas.style.transform = `rotate(${ang - PI / 2}rad)`;
+            //EL_spin.textContent = !spinned ? "Launch" : sector.label;
+            EL_spin.textContent = !spinned ? "Launch" : "Wait a minute";
+            EL_spin.style.background = sector.color;
+            spinned ? $(".winner").text(sector.label) : $(".winner").text("Winner");
+        }
+
+        function frame() {
+            if (!angVel) return;
+            angVel *= friction; // Decrement velocity by friction
+            if (angVel < 0.001) {angVel = 0;} // Bring to stop
+            ang += angVel; // Update angle
+            ang %= TAU; // Normalize angle
+            rotate();
+            if (!angVel) {
+                EL_spin.textContent = "Launch";
+                spinned = false;
+            };
+        }
+
+        function engine(newtime) {
+            requestAnimationFrame(engine);
+
+            now = newtime;
+            elapsed = now - then;
+
+            // if enough time has elapsed, draw the next frame
+
+            if (elapsed > fpsInterval) {
+
+                // Get ready for next frame by setting then=now, but also adjust for your
+                // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
+                then = now - (elapsed % fpsInterval);
+
+                // Put your drawing code here
+                frame();
+            }
+        }
+
+        function prepare() {
+            var sumarc = 0;
+            for (var i = 0; i < sectors.length; i++) {
+                drawSector(sectors[i], i, sumarc);
+                sumarc += sectors[i].arc;
+            }
+        }
+        prepare();
+        rotate(); // Initial rotation
+
+        var fps, fpsInterval, startTime, now, then, elapsed;
+
+        fps = 60;
+        fpsInterval = 1000 / fps;
+        then = window.performance.now();
+        startTime = then;
+
+        engine(); // Start engine
+        EL_spin.addEventListener("click", () => {
+            if (sectors.length >= 1) {
+                if (!angVel && !spinned) {
+                    angVel = rand(0.18, 0.25);
+                    spinned = true;
+                }
+                /*if (!angVel) {
+                  EL_spin.textContent = "Launch";
+                  spinned = false;
+              };*/
+            }
+        });
+
+        //добавление варината
+        $("#add").on('click', function() {
+            //color = '#'+Math.floor(Math.random()*16777215).toString(16);
+            var color = randomColor({luminosity: 'dark'});
+            $("tbody").append('<tr data-color="'+color+'"><td style="max-width: 300px;"><input type="text" autocomplete="off" style="padding: 2px 20px;font-size: 1.8rem;" name="name" onchange="recount();" class="form-control" placeholder=""></td><td style="max-width: 67px;"><button style="background: '+color+';" class="btn btn-sm btn-icon" onclick="nextcolor($(this));"></button></td><td class="weight" style="max-width: 50px;"></td><td style="max-width: 80px;"><form action="" class="form-inline" onsubmit="return false;"><input autocomplete="off" type="text" onchange="recount();" name="value" class="form-control" style="max-width: 150px;padding: 2px 20px;font-size: 1.8rem;" placeholder="" value="0"></form></td><td style="max-width: 107px;"><form action="" style="min-width: 184px;" class="form-inline" onsubmit="return false;"><input autocomplete="off" type="text" name="add" style="max-width: 120px;font-size: 1.5rem;" class="form-control mr-sm-2" placeholder="0" value=""><button class="btn btn-success font-weight-bold" style="font-size:2rem;padding: 0.42rem 1.0rem;" onclick="addvalue($(this).prev())">+</button></form></td><td class="text-right" style="max-width: 67px;"><button class="btn btn-sm btn-danger" onclick="$(this).parent().parent().remove();recount();">Remove</button></td></tr>');
+        })
+        function toPositiveNumber(stringEl){
+          // all ',', only first occurrence of '-'
+          return Number(stringEl.value.replace(',', '.').replace(/^(-)/, ''));
+        }
+        function addvalue($el) {
+            if (!isNaN(toPositiveNumber($el[0])) && Number(toPositiveNumber($el[0])) > 0) {
+                if ($el[0].value[0] == "-") {
+                    summ += 0 - toPositiveNumber($el[0]);
+                } else {
+                    summ += toPositiveNumber($el[0]);
+                }
+                $el.parent().parent().prev().children().children()[0].value = Number($el.parent().parent().prev().children().children()[0].value) + Number($el[0].value.replace(',', '.'));
+                $el[0].value = "";
+                recount();
+            }
+        }
+        //изменениие цвета
+        function nextcolor($el) {
+            var color = randomColor({luminosity: 'dark'});
+            $el.parent().parent().data("color", color);
+            $el.css("background", color);
+            recount();
+        }
+        //пересчет
+        function recount() {
+            if (!spinned) {
+                ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+                sectors = [];
+                trs = [];
+                summ = 0;
+                json = [];
+                $("tbody > tr").each(function(i, el) {
+                    if (Number($(el).find("[name=value]")[0].value) > 0 && $(el).find("[name=name]")[0].value != "") {
+                        summ += Number($(el).find("[name=value]")[0].value);
+                    }
+                    trs.push({val: Number($(el).find("[name=value]")[0].value), el: el});
+                    json.push({val: Number($(el).find("[name=value]")[0].value), name: $(el).find("[name=name]")[0].value.trim()});
+                });
+                trs.sort(function(a, b) {
+                  return b.val - a.val;
+                });
+                localStorage.setItem('json', JSON.stringify(json));
+                $("tbody")[0].innerHTML = "";
+                trs.forEach(function(el, i) {
+                    $("tbody").append(el.el);
+                });
+                var e = 0;
+                $("tbody > tr").each(function(i, el) {
+                    if (Number($(el).find("[name=value]")[0].value) > 0 && $(el).find("[name=name]")[0].value != "") {
+                        $(el).find(".weight")[0].innerText = (Number($(el).find("[name=value]")[0].value) / summ * 100).toFixed(2);
+                        sectors[e] = {color:$(el).data("color"), label:$(el).find("[name=name]")[0].value.trim(), arc:TAU*Number($(el).find("[name=value]")[0].value)/summ, w: 0, val: Number($(el).find("[name=value]")[0].value)};
+                        e++;
+                    } else {
+                        $(el).find(".weight")[0].innerText = "0.00";
+                    }
+                });
+                sectors.forEach(function(sector, i) {
+                    sector.arc = TAU*sector.val/summ;
+                });
+                shuffle(sectors);
+                prepare();
+            }
+        }
+        //рандомный порядок вариантов в колесе (новое)
+        function shuffle(array) {
+          var currentIndex = array.length, temporaryValue, randomIndex;
+
+          // While there remain elements to shuffle...
+          while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+          }
+
+          return array;
+        }
+        if (typeof(localStorage.json) != "undefined") {
+            JSON.parse( localStorage.json ).forEach(function(el){
+                var color = randomColor({luminosity: 'dark'});
+                $("tbody").append('<tr data-color="'+color+'"><td style="max-width: 300px;"><input type="text" autocomplete="off" style="padding: 2px 20px;font-size: 1.8rem;" name="name" onchange="recount();" class="form-control" placeholder="" value="'+el.name+'"></td><td style="max-width: 67px;"><button style="background: '+color+';" class="btn btn-sm btn-icon" onclick="nextcolor($(this));"></button></td><td class="weight" style="max-width: 50px;"></td><td style="max-width: 80px;"><form action="" class="form-inline" onsubmit="return false;"><input autocomplete="off" type="text" onchange="recount();" name="value" class="form-control" style="max-width: 150px;padding: 2px 20px;font-size: 1.8rem;" placeholder=""  value="'+el.val+'"></form></td><td style="max-width: 107px;"><form action="" style="min-width: 184px;" class="form-inline" onsubmit="return false;"><input autocomplete="off" type="text" name="add" style="max-width: 120px;font-size: 1.5rem;" class="form-control mr-sm-2" placeholder="0" value=""><button class="btn btn-success font-weight-bold" style="font-size:2rem;padding: 0.42rem 1.0rem;" onclick="addvalue($(this).prev())">+</button></form></td><td class="text-right" style="max-width: 67px;"><button class="btn btn-sm btn-danger" onclick="$(this).parent().parent().remove();recount();">Remove</button></td></tr>');
+            });
+            recount();
+        }
+        function clearall() {
+            if (confirm("Remove все лоты?")) {
+                delete localStorage.json;
+                $("tbody tr").remove();
+            }
+        }
+        function changesize(val) {
+            if (!spinned && $(".maxbody").width() > 700 * val) {
+                $("#wheel")[0].width  = 700 * val;
+                $("#wheel")[0].height = 700 * val;
+                $("#wheel")[0].style.width  = 700 * val + 'px';
+                $("#wheel")[0].style.height = 700 * val + 'px';
+                rad = document.querySelector("#wheel").getContext('2d').canvas.width / 2;
+                recount();
+            }
+        }
+        function left() {
+            $(".flex").addClass("rowleft").removeClass("rowrigth");
+        }
+        function right() {
+            $(".flex").addClass("rowrigth").removeClass("rowleft");
+        }
+        </script>
+</body></html>

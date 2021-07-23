@@ -1,0 +1,103 @@
+#wheelOfFortune {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+#wheel {
+  display: block;
+}
+
+#spin {
+  font: 1.5em/0 sans-serif;
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  height: 30%;
+  margin: -15%;
+  background: #fff;
+  color: #fff;
+  box-shadow: 0 0 0 8px currentColor, 0 0px 15px 5px rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  transition: 0.8s;
+}
+
+#spin::after {
+  content: "";
+  position: absolute;
+  top: -17px;
+  border: 10px solid transparent;
+  border-bottom-color: currentColor;
+  border-top: none;
+}
+.main-panel {min-height: 100vh;}
+.form-control1{font-size: 2.0125rem!important;padding: 0rem 1.375rem!important;}
+
+
+
+.countdown-title {
+  color: #396;
+  font-weight: 100;
+  font-size: 40px;
+  margin: 40px 0px 20px;
+}
+
+.countdown {
+  font-family: sans-serif;
+  color: #fff;
+  display: inline-block;
+  font-weight: 100;
+  text-align: center;
+  font-size: 69px;
+}
+
+.countdown-number {
+  padding: 10px;
+  border-radius: 3px;
+  background: #00bf96;
+  display: inline-block;
+}
+
+.countdown-time {
+  padding: 15px;
+  border-radius: 3px;
+  background: #00816a;
+  display: inline-block;
+}
+
+.countdown-text {
+  display: block;
+  padding-top: 5px;
+  font-size: 16px;
+}
+.btn-secondary {
+    color: #212529;
+    background-color: #808080;
+    border-color: #6f6f6f;
+}
+.weight {
+    font-size: 1.5rem!important;
+}
+.table td {
+    padding: 0.8375rem;
+}
+
+/* sticky timer, requires wrappers without `overflow: hidden` */
+#time-container {
+  position: sticky;
+  top: 2.75rem;
+}
+.container-scroller{
+  overflow: initial;
+}
+body, html {
+  overflow-x: initial;
+}
+.rowleft {flex-direction: row-reverse;}
+.rowrigth {flex-direction: row;}
