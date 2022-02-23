@@ -1,0 +1,25 @@
+.FontDisplaySwap(@isFDS) when (@isFDS =true) {
+  font-display: swap;
+}
+
+.srcFontsGlobal(@dirFamyli, @FontFamyli) {
+  src: url("@{srcDirFonts}@{dirFamyli}/@{FontFamyli}/@{FontFamyli}");
+}
+
+// Variables:
+//    @Famyli:    type 'string' - принимает семейство шрифта (необходимо передевать параметр)
+//    @FontStyle: type 'string' - принимает необходимое начертание шрифта (необходимо передевать параметр)
+//    @srcFonts:  type 'string' - принимает глобальный путь расположения шрифтов
+.fonts(@Famyli, @FontStyle, @srcFonts: "@{srcDirFonts}") {
+  @font-face {
+    font-family: "@{Famyli}-@{FontStyle}";
+    src: local("@{Famyli} @{FontStyle}");
+    src: url("@{srcDirFonts}@{Famyli}/@{Famyli}-@{FontStyle}/@{Famyli}-@{FontStyle}.ttf")
+        format("truetype"),
+      url("@{srcDirFonts}@{Famyli}/@{Famyli}-@{FontStyle}/@{Famyli}-@{FontStyle}.woff")
+        format("woff"),
+      url("@{srcDirFonts}@{Famyli}/@{Famyli}-@{FontStyle}/@{Famyli}-@{FontStyle}.woff2")
+        format("woff2"),
+      .FontDisplaySwap(true);
+  }
+}

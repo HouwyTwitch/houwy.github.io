@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>List of anime watched by Houwy</title>
+    <!-- Подключение метатегов -->
+    @@include('../includes/_meta.head.html')
+    <!-- Подключение css-стилей -->
+    @@include('../includes/_stylesheets.head.html')
+    <!-- Подключение первичного javascript -->
+    @@include('../includes/_scripts.head.html')
+  </head>
+  <body>
+    <!-- Подключение исходных svg-иконок -->
+    @@include('../includes/_svg.body.html')
+
+    <div class="leaderboard">
+      @@include('../includes/_header.body.html')
+
+      <main class="leaderboard__profiles">
+        @@loop('../template-pages/index/_leader-board.html',
+        './article-anime.json')
+      </main>
+    </div>
+
+    <!-- Подключение основного javascript -->
+    @@include('../includes/_scripts.body.html')
+  </body>
+</html>
