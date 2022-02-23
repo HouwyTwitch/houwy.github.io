@@ -5,6 +5,7 @@ const gulpBuilds = "./builds/";
 const { clearDir } = require(`${gulpBuilds}clear.task`);
 const { buildLess } = require(`${gulpBuilds}less-build.task`);
 const { buildHtml } = require(`${gulpBuilds}html-build.task`);
+const { copyStatic } = require(`${gulpBuilds}static-files-build.task`);
 
 const { distPath, paths, browserSync } = require(`./builds/_variables`);
 
@@ -24,8 +25,8 @@ const serve = () => {
 };
 
 const buildAssets = series(clearDir, parallel(buildLess));
-const build = series(buildAssets, buildHtml);
-const buildProd = series(buildAssets, buildHtml);
+const build = series(buildAssets, buildHtml, copyStatic);
+const buildProd = series(buildAssets, buildHtml, copyStatic);
 
 exports.clear = clearDir;
 // exports.fonts = buildFonts;

@@ -19,6 +19,7 @@ const imgFolder = `/img`;
 const jsFolder = `/js`;
 const vendorsFolder = `/vendors`;
 const templateFolder = `/html`;
+const publicFolder = `/public`;
 const pagesTemplateFolder = `/pages`;
 const includeFolder = `/includes`;
 
@@ -26,6 +27,7 @@ const paths = {
   dist: {
     css: `${distPath}${assetsFolder}${cssFolder}/`,
     html: `${distPath}/`,
+    static: `${distPath}/`,
   },
   src: {
     less: `${srcPath}${assetsFolder}${lessFolder}/main.less`,
@@ -33,6 +35,7 @@ const paths = {
       `${srcPath}${templateFolder}${pagesTemplateFolder}/**/*.html`,
       `!${srcPath}${templateFolder}${pagesTemplateFolder}/**/_*.html`,
     ],
+    static: `${srcPath}${publicFolder}/**`,
   },
   watch: {
     less: `${srcPath}${assetsFolder}${lessFolder}/**/*.less`,
@@ -56,6 +59,7 @@ module.exports = {
   jsFolder,
   vendorsFolder,
   templateFolder,
+  publicFolder,
   pagesTemplateFolder,
   includeFolder,
   // Plugins
