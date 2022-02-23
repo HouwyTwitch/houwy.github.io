@@ -1,5 +1,5 @@
 const { gulp, browserSync, fileInclude, paths } = require("./_variables.js");
-console.log(paths.src.html);
+
 const buildHtml = () => {
   return gulp
     .src(paths.src.html)
